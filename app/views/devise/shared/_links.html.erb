@@ -3,7 +3,7 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= button_to "회원가입", new_registration_path(resource_name), class: 'btn btn-primary btn-block mt-3', style: 'background-color: #FFC000;', method:'get' %><br />
+  <%= button_to "회원가입", new_registration_path(resource_name), class: 'btn btn btn-block mt-3', style: 'background-color: #FFC000; height: 3.0rem; color: #333', method:'get' %><br />
 <% end -%>
 
 <!--<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>-->

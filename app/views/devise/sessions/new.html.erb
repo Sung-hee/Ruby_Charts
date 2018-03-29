@@ -5,18 +5,17 @@
   div {
     height: 100%; border: 1px;
   }
-  
 </style>
 
-<div class="container" id="container_height" style="background-color: #eeeeee;">
+<div class="container" style="background-color: #eeeeee;">
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field mb-3">
-        <%= f.text_field :user_id, autofocus: true, autocomplete: "off", style: "width:100%; height:2rem;", placeholder: "아이디를 입력하세요" %>
+        <%= f.text_field :user_id, autofocus: true, autocomplete: "off", style: "width:100%; height:2.5rem; font-size: 0.8rem; padding:0.8rem;", placeholder: "아이디를 입력하세요" %>
       </div>
     
       <div class="field">
-        <%= f.password_field :password, autocomplete: "off", style: "width:100%; height:2rem;", placeholder: "비밀번호를 입력하세요" %>
+        <%= f.password_field :password, autocomplete: "off", style: "width:100%; height:2.5rem; font-size: 0.8rem; padding:0.8rem;", placeholder: "비밀번호를 입력하세요" %>
       </div>
     
       <!--<% if devise_mapping.rememberable? -%>-->
@@ -32,7 +31,7 @@
       </div>
       
       <div class="actions mt-3">
-        <%= f.submit "로그인", class: 'btn btn-primary btn-block', style: 'background-color: #91180b'%>
+        <%= f.submit "로그인", class: 'btn btn btn-block text-white', style: 'background-color: #91180b; height:3.0rem;' %>
       </div>
     <% end %>
     
