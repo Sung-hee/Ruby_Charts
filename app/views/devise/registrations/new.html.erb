@@ -30,56 +30,64 @@
             <table class="table">
               <tr style="padding:0">
                 <td style="background-color:#FFFFFF; padding:0;">
-                  <%= f.label :필명, style: "margin-bottom: 0; color:#333; padding: 0.8rem" %>
+                  <%= f.label :필명, style: "margin-bottom: 0; color:#333; padding: 0.8rem; font-size: 0.9rem;" %>
                 </td>
                 <td style="padding:0; background-color:#FFFFFF">
-                  <%= f.text_field :nickname, autofocus: true, style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0;", placeholder: "필명을 입력하세요" %><br/>
+                  <%= f.text_field :nickname, autofocus: true, style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0; font-size: 0.8rem;", placeholder: "필명을 입력하세요" %><br/>
                 </td>
               </tr>
               <tr style="padding:0;">
                 <td style="background-color:#FFFFFF; padding:0;">
-                  <%= f.label :'비밀번호', style: "margin-bottom: 0; color:#333; padding: 0.8rem" %>
+                  <%= f.label :'비밀번호', style: "margin-bottom: 0; color:#333; padding: 0.8rem; font-size: 0.9rem;" %>
                 </td>
                 <td style="padding:0; background-color:#FFFFFF">
-                  <%= f.password_field :nick_pass, autofocus: true, style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0;", placeholder: "비밀번호를 입력하세요" %><br/>
+                  <%= f.password_field :nick_pass, autofocus: true, style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0; font-size: 0.8rem;", placeholder: "비밀번호를 입력하세요" %><br/>
                 </td>
               </tr>
             </table>
-            <hr class="my-4">
           </div>
           
-          <table class="table">
+          <table class="table" style="margin-top:0.5rem;">
             <tr style="padding:0">
               <td style="background-color:#FFFFFF; padding:0;">
-                <%= f.label :아이디, style: "margin-bottom: 0; color:#333; padding: 0.8rem" %> <em> (최소 6자리)</em>
-                <%= f.text_field :user_id, autofocus: true, style: "width:100%", placeholder: "영어 + 숫자 조합으로 입력하세요" %>
+                <%= f.label :아이디, style: "margin-bottom: 0; color:#333; padding: 0.8rem; font-size: 0.9rem;" %>
               </td>
-            
-            <div class="form-group" style= "margin-bottom: 0;">
-              <div class="form-row">
-                <div class="col-md-6">
-                  <%= f.label :비밀번호, style: "margin-bottom: 0; margin-top: 0.5rem;" %>
-                  <% if @minimum_password_length %>
-                  <em>(최소 <%= @minimum_password_length %>자리)</em>
-                  <% end %>
-                  <%= f.password_field :password, autocomplete: "off", style: "width:100%", placeholder: "비밀번호를 입력하세요" %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.label :'비밀번호 재확인', style: "margin-bottom: 0; margin-top: 0.5rem;" %>
-                  <%= f.password_field :password_confirmation, autocomplete: "off", style: "width:100%", placeholder: "비밀번호 재확인" %>
-                </div>
-              </div>
-            </div>
-          
-            <div class="field">
-              <%= f.label :전화번호, style: "margin-bottom: 0; margin-top: 1.0rem;" %>
-              <%= f.text_field :phone, autofocus: true, style: "width:100%", placeholder: "전화번호를 입력하세요" %>
-            </div>
-            
-            <div class="field">
-              <%= f.label :이메일, style: "margin-bottom: 0; margin-top: 1.0rem;" %>
-              <%= f.text_field :email, autofocus: true, style: "width:100%", placeholder: "이메일을 입력하세요" %>
-            </div>
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.text_field :user_id, autofocus: true, style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0; font-size: 0.8rem;", placeholder: "영어+숫자, 최소6자리" %>
+              </td>
+            </tr>
+            <tr style="padding:0">
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.label :비밀번호, style: "margin-bottom: 0; color:#333; padding: 0.8rem; font-size: 0.9rem;" %>
+              </td>
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.password_field :password, autocomplete: "off", style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0; font-size: 0.8rem;", placeholder: "최소 6자리" %>
+              </td>
+            <tr>
+            <tr style="padding:0">
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.label :'비밀번호 확인', style: "margin-bottom: 0; color:#333; padding: 0.8rem; font-size: 0.9rem;" %>
+              </td>
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.password_field :password_confirmation, autocomplete: "off", style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0; font-size: 0.8rem;", placeholder: "입력하세요" %>
+              </td>
+            </tr>
+            <tr style="padding:0">
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.label :전화번호, style: "margin-bottom: 0; color:#333; padding: 0.8rem; font-size: 0.9rem;" %>
+              </td>
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.text_field :phone, autofocus: true, style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0; font-size: 0.8rem;", placeholder: "입력하세요" %>
+              </td>
+            </tr>
+            <tr style="background-color:#FFFFFF; padding:0;">
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.label :이메일, style: "margin-bottom: 0; color:#333; padding: 0.8rem; font-size: 0.9rem;" %>
+              </td>
+              <td style="background-color:#FFFFFF; padding:0;">
+                <%= f.text_field :email, autofocus: true, style: "width:100%; padding: 0.8rem; margin-bottom: 0; background-color:#FFFFFF; border:0; font-size: 0.8rem;", placeholder: "입력하세요" %>
+              </td>
+            </tr>
           </table>
           <div class="actions">
             </br>
