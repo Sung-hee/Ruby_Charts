@@ -11,7 +11,7 @@
   <div class="card-body">
     <!--<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
     
-    <%= form_for(resource, as: resource_name, actions: "http://61.72.187.6/phps/login", method: "post") do |f| %>
+    <%= form_for(resource, as: resource_name, url: "http://61.72.187.6/phps/login", method: "post") do |f| %>
     <!--<form actions="http://61.72.187.6/phps/login" method="POST" >-->
       <div class="field mb-3">
         <%= f.text_field :user_id, autofocus: true, autocomplete: "off", style: "width:100%; height:2.5rem; font-size: 0.8rem; padding:0.8rem;", placeholder: "아이디를 입력하세요" %>
