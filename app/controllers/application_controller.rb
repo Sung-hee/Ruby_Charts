@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  
   # rescue_from CanCan::AccessDenied do |exception|
   #   flash[:alert] = "권한이 없습니다."
   #   redirect_to '/'

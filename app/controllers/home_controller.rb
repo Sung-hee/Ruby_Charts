@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
   def index
+    puts session[:grade].inspect
+    
+    if @current == false
+      redirect_to '/users/sign_in'
+    end
   end
 
   def charts
-    @urlparam = request.query_parameters['name']
 
   end
   
@@ -20,6 +24,7 @@ class HomeController < ApplicationController
   
   def c1charts
     @urlparam = request.query_parameters['name']
+    
   end
   
   def giftcharts
@@ -52,5 +57,9 @@ class HomeController < ApplicationController
   end
   
   def pro
+  end
+  
+  def payment
+    
   end
 end
