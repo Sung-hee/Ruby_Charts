@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   require 'nokogiri'
   
   def sign_in
-    puts @session_grade.inspect
 
     url = "http://61.72.187.6/phps/login?id=#{params[:id]}&pwd=#{params[:pwd]}"
     # url = "https://charttest-sungheeek.c9users.io/truefalse.json"
@@ -12,10 +11,13 @@ class UsersController < ApplicationController
     hash = JSON.parse(response.body)
     
     result = hash[0]["result"]
+    error = hash[0]["error"]
     grade = hash[0]["grade"]
     
     session[:grade] = grade
+    session[:error] = error
     @session_grade = session[:grade]
+    
     
     puts @session_grade.inspect
     
@@ -38,6 +40,7 @@ class UsersController < ApplicationController
     
     # 세션 저장하기
     session[:grade] = @grade
+    session[:error] = @error
     
     @session_grade = session[:grade]
     

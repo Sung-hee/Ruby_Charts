@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   get 'home/proStock' => 'home#proStock'
   get 'home/kakaotalk' => 'home#kakaotalk'
   get 'home/payment' => 'home#payment'
-
+  get 'home/popup' => 'home#popup'
+  
   get 'users/sign_in' 
   get 'users/sign_up' 
   get 'users/up_session'

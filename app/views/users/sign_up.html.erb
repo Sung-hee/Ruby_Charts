@@ -13,6 +13,7 @@
   <div class="card-body">
     <form actions="/users/sign_up">
       <div class="text-center">
+        <label style="color:red; font-size: 0.9rem"><%= session[:error] %></label></br>
         <label style= "font-size: 2rem; text-decoration: underline">기존 회원이신가요?</label>
       </div>
       <div class="btn-group btn-group-toggle" id="radiobutton" style="width:100%">
@@ -89,7 +90,7 @@
       </table>
       <div class="actions">
         </br>
-        <input type="submit" class="btn btn btn-block text-white" style="background-color: #91180b; height:3.0rem;" value="동의하고 회원가입"/> 
+        <input type="submit" class="btn btn btn-block text-white" style="background-color: #91180b; height:3.0rem;" value="동의하고 회원가입" /> 
       </div>
     </form>
   </div>
