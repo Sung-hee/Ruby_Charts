@@ -36,6 +36,7 @@ class UsersController < ApplicationController
       end
     else
       redirect_to '/home/index'
+      session[:grade] = grade
     end
   end
   
@@ -74,5 +75,6 @@ class UsersController < ApplicationController
     end
   else
     redirect_to '/home/index'
+    session[:grade] = grade
   end
 end
