@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   require 'nokogiri'
   
   def sign_in
+    @title = "로그인"
     if session[:grade].nil?
       url = "http://61.72.187.6/phps/login?id=#{params[:id]}&pwd=#{params[:pwd]}"
       encode = URI.encode(url)
@@ -39,6 +40,8 @@ class UsersController < ApplicationController
   end
   
   def sign_up
+    @title = "회원가입"
+    
     if session[:grade].nil?
       url = "http://61.72.187.6/phps/join.php?nickname=#{params[:nickname]}&nick_pass=#{params[:nick_pass]}&id=#{params[:id]}&pwd=#{params[:pwd]}&pwd_confirmation=#{params[:pwd_confirmation]}&phone=#{params[:phone]}&email=#{params[:email]}"
       encode = URI.encode(url)
