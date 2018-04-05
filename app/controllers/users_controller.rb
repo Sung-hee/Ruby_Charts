@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def sign_in
     @title = "로그인"
     if session[:grade].nil?
-      url = "http://61.72.187.6/phps/login?id=#{params[:id]}&pwd=#{params[:pwd]}"
+      url = "http://13.125.147.26/phps/login?id=#{params[:id]}&pwd=#{params[:pwd]}"
       encode = URI.encode(url)
       # url = "https://charttest-sungheeek.c9users.io/truefalse.json"
       response = HTTParty.get(encode)
@@ -36,7 +36,6 @@ class UsersController < ApplicationController
       end
     else
       redirect_to '/home/index'
-      session[:grade] = grade
     end
   end
   
@@ -44,7 +43,7 @@ class UsersController < ApplicationController
     @title = "회원가입"
     
     if session[:grade].nil?
-      url = "http://61.72.187.6/phps/join.php?nickname=#{params[:nickname]}&nick_pass=#{params[:nick_pass]}&id=#{params[:id]}&pwd=#{params[:pwd]}&pwd_confirmation=#{params[:pwd_confirmation]}&phone=#{params[:phone]}&email=#{params[:email]}"
+      url = "http://13.125.147.26/phps/join?id=#{params[:id]}&pwd=#{params[:pwd]}&pwd_confirmation=#{params[:pwd_confirmation]}&phone=#{params[:phone]}&email=#{params[:email]}"
       encode = URI.encode(url)
       response = HTTParty.get(encode)
       hash = JSON.parse(response.body)
@@ -75,6 +74,5 @@ class UsersController < ApplicationController
     end
   else
     redirect_to '/home/index'
-    session[:grade] = grade
   end
 end
