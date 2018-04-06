@@ -20,4 +20,4 @@
 //= require jquery.min
 //= require bootstrap.bundle.min
 //= require jquery.easing.min
-//= require sb-admin.min
+//= require sb-admin
