@@ -21,57 +21,11 @@
 <script src="http://13.125.147.26/script/EasyAutocomplete/lib/jquery-1.11.2.min.js"></script>
 <script src="http://13.125.147.26/script/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js" type="text/javascript" ></script>
 
+<script type="text/javascript" src="http://13.125.147.26/charting_library/charting_library/charting_library.min.js"></script>
+<script type="text/javascript" src="http://13.125.147.26/charting_library/datafeeds/udf/dist/polyfills.js"></script>
+<script type="text/javascript" src="http://13.125.147.26/charting_library/datafeeds/udf/dist/bundle.js"></script>
 
-
-
-
-		<script type="text/javascript" src="http://13.125.147.26/charting_library/charting_library/charting_library.min.js"></script>
-		<script type="text/javascript" src="http://13.125.147.26/charting_library/datafeeds/udf/dist/polyfills.js"></script>
-		<script type="text/javascript" src="http://13.125.147.26/charting_library/datafeeds/udf/dist/bundle.js"></script>
-
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript">
-
-			TradingView.onready(function()
-			{
-				var widget = new TradingView.widget({
-					fullscreen: true,
-					symbol: 'AAPL',
-					interval: 'D',
-					container_id: "tv_chart_container",
-					//	BEWARE: no trailing slash is expected in feed URL
-					datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
-					library_path: "http://13.125.147.26/charting_library/",
-					locale: "ko",
-					//	Regression Trend-related functionality is not implemented yet, so it's hidden for a while
-					drawings_access: { type: 'black', tools: [ { name: "Regression Trend" } ] },
-					disabled_features: ["use_localstorage_for_settings"],
-					preset: "mobile",
-					overrides: {
-						"mainSeriesProperties.candleStyle.upColor": "#FF0000", 
-						"mainSeriesProperties.candleStyle.downColor": "#0000FF", 
-						"mainSeriesProperties.candleStyle.wickUpColor": "#FF0000", 
-						"mainSeriesProperties.candleStyle.wickDownColor": "#0000FF",
-						"mainSeriesProperties.candleStyle.borderUpColor": "#FF0000", 
-						"mainSeriesProperties.candleStyle.borderDownColor": "#0000FF",
-						"paneProperties.topMargin": 10,
-						"paneProperties.bottomMargin": 25,
-						"paneProperties.legendProperties.showStudyArguments": false,
-						"paneProperties.legendProperties.showStudyTitles": true,
-						"paneProperties.legendProperties.showStudyValues": true,
-						"paneProperties.legendProperties.showSeriesTitle": false,
-						"paneProperties.legendProperties.showSeriesOHLC": true
-					},
-					studies_overrides: {
-						"volume.volume.color.0": "#0000FF",
-						"volume.volume.color.1": "#FF0000",
-						"volume.volume.transparency": 70,
-					}
-				});
-			})
-
-		</script>
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <style>
   .progress {
@@ -194,62 +148,102 @@
   </div>
 </div>
 
-<!--<script>-->
-<!--  var getParam = function(key){-->
-<!--      var _parammap = {};-->
-<!--      document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {-->
-<!--          function decode(s) {-->
-<!--              return decodeURIComponent(s.split("+").join(" "));-->
-<!--          }-->
-<!--          _parammap[decode(arguments[1])] = decode(arguments[2]);-->
-<!--      });-->
+<script>
+  var getParam = function(key){
+      var _parammap = {};
+      document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+          function decode(s) {
+              return decodeURIComponent(s.split("+").join(" "));
+          }
+          _parammap[decode(arguments[1])] = decode(arguments[2]);
+      });
   
-<!--      return _parammap[key];-->
-<!--  };-->
+      return _parammap[key];
+  };
   
-<!--  var companycode = getParam("name");-->
-<!--  var ajaxdata;-->
+  var companycode = getParam("name");
+  var ajaxdata;
   
-<!--  $(document).ready(function(){-->
-<!--    ajaxdata = setInterval(autodata, 1000);-->
-<!--  });-->
+  $(document).ready(function(){
+    ajaxdata = setInterval(autodata, 1000);
+  });
   
-<!--  function autodata(){-->
-<!--    $.ajax({-->
-<!--      url: "http://13.125.147.26/phps/now?name=" + companycode,-->
-<!--      type: "GET",-->
-<!--      dataType: "json",-->
-<!--      async: false,-->
-<!--      success: function(data){-->
-<!--        var json_data = '';-->
-<!--        $.each(data, function(key, value){-->
-<!--          if(value.semo == "▲"){-->
-<!--            json_data += '<label style="color:red">'+value.name+'('+value.code+')'+'&nbsp&nbsp&nbsp'+value.now+'원&nbsp&nbsp&nbsp'+value.semo+'&nbsp'+value.pok+'&nbsp&nbsp'+value.per+'%</label>';-->
-<!--          }-->
-<!--          else {-->
-<!--            json_data += '<label style="color:blue">'+value.name+'('+value.code+')'+'&nbsp&nbsp&nbsp'+value.now+'원&nbsp&nbsp&nbsp'+value.semo+'&nbsp'+value.pok+'&nbsp&nbsp'+value.per+'%</label>';-->
-<!--          }-->
-<!--        });-->
-<!--        $('#charts').html(json_data);-->
-<!--      }-->
-<!--    });-->
-<!--  }-->
-<!--  $(document).ready(function(){-->
-<!--    $('input[name=buttons]').change(function() {-->
-<!--      clearInterval(ajaxdata);-->
-<!--    });-->
-<!--  });-->
-<!--	var options = {-->
-<!--			url: "http://13.125.147.26/phps/_search_popular?stx",-->
+  function autodata(){
+    $.ajax({
+      url: "http://13.125.147.26/phps/now?name=" + companycode,
+      type: "GET",
+      dataType: "json",
+      async: false,
+      success: function(data){
+        var json_data = '';
+        $.each(data, function(key, value){
+          if(value.semo == "▲"){
+            json_data += '<label style="color:red">'+value.name+'('+value.code+')'+'&nbsp&nbsp&nbsp'+value.now+'원&nbsp&nbsp&nbsp'+value.semo+'&nbsp'+value.pok+'&nbsp&nbsp'+value.per+'%</label>';
+          }
+          else {
+            json_data += '<label style="color:blue">'+value.name+'('+value.code+')'+'&nbsp&nbsp&nbsp'+value.now+'원&nbsp&nbsp&nbsp'+value.semo+'&nbsp'+value.pok+'&nbsp&nbsp'+value.per+'%</label>';
+          }
+        });
+        $('#charts').html(json_data);
+      }
+    });
+  }
+  $(document).ready(function(){
+    $('input[name=buttons]').change(function() {
+      clearInterval(ajaxdata);
+    });
+  });
+	var options = {
+			url: "http://13.125.147.26/phps/_search_popular?stx",
 
-<!--			getValue: "value",-->
+			getValue: "value",
 
-<!--			list: {-->
-<!--				match: {-->
-<!--					enabled: true-->
-<!--				}-->
-<!--			}-->
-<!--		};-->
-<!--		console.log(options);-->
-<!--		$("#data-json").easyAutocomplete(options);  -->
-<!--</script>-->
+			list: {
+				match: {
+					enabled: true
+				}
+			}
+		};
+		console.log(options);
+		$("#data-json").easyAutocomplete(options);
+		
+		
+			TradingView.onready(function()
+			{
+				var widget = new TradingView.widget({
+					fullscreen: true,
+					symbol: 'AAPL',
+					interval: 'D',
+					container_id: "tv_chart_container",
+					//	BEWARE: no trailing slash is expected in feed URL
+					datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
+					library_path: "http://13.125.147.26/charting_library/charting_library/",
+					locale: "ko",
+					//	Regression Trend-related functionality is not implemented yet, so it's hidden for a while
+					drawings_access: { type: 'black', tools: [ { name: "Regression Trend" } ] },
+					disabled_features: ["use_localstorage_for_settings"],
+					preset: "mobile",
+					overrides: {
+						"mainSeriesProperties.candleStyle.upColor": "#FF0000", 
+						"mainSeriesProperties.candleStyle.downColor": "#0000FF", 
+						"mainSeriesProperties.candleStyle.wickUpColor": "#FF0000", 
+						"mainSeriesProperties.candleStyle.wickDownColor": "#0000FF",
+						"mainSeriesProperties.candleStyle.borderUpColor": "#FF0000", 
+						"mainSeriesProperties.candleStyle.borderDownColor": "#0000FF",
+						"paneProperties.topMargin": 10,
+						"paneProperties.bottomMargin": 25,
+						"paneProperties.legendProperties.showStudyArguments": false,
+						"paneProperties.legendProperties.showStudyTitles": true,
+						"paneProperties.legendProperties.showStudyValues": true,
+						"paneProperties.legendProperties.showSeriesTitle": false,
+						"paneProperties.legendProperties.showSeriesOHLC": true
+					},
+					studies_overrides: {
+						"volume.volume.color.0": "#0000FF",
+						"volume.volume.color.1": "#FF0000",
+						"volume.volume.transparency": 70,
+					}
+				});
+			})
+			
+</script>
