@@ -1,24 +1,82 @@
+## 황금알M 
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+###루비 코드를 제외하고 설명 따윈 없습니다. (feat 작성자 마음)
 
 
-Welcome to your Rails project on Cloud9 IDE!
 
-To get started, just do the following:
+#### 1. Gemfile
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://HOSTNAME/).
+```ruby
+gem 'httparty'
+gem 'nokogiri'
+gem 'json'
+gem 'protected_attributes'
+gem 'bootstrap', '~> 4.0.0'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'figaro'
+```
 
-Happy coding!
-The Cloud9 IDE team
 
 
-## Support & Documentation
+#### 2. Controller 
 
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+- users - 사용자 로그인 처리
+- home - 메인 페이지 처리
+
+```
+$ rails g controller users
+$ rails g controller home
+```
+
+
+
+#### 3. Users controller
+
+- 로그인 및 회원가입 처리를 위한 세션 저장 및 처리
+
+```ruby
+# 세션에 grade란 놈이 비어있는가 ?
+if session[:grade].nil? 
+  # ...
+  # 로그인 처리 코드
+  # ...
+  # 로그인 시 grade 등급과 error 메세지를 세션에 저장
+  session[:grade] = grade
+  session[:error] = error
+end
+```
+
+
+
+#### 4. Homes controller
+
+- url 파라미터 얻기
+
+```ruby
+# url이 www.test.com?name=값 일때, name의 값을 가져오기
+@urlparam = request.query_parameters['name']
+```
+
+
+
+#### 5. home Views
+
+- 자동완성 기능
+
+```javascript
+var options = {
+  // 자동완성의 필요한 검색 목록 url 혹은 db url
+  url: "http://13.124.230.32/phps/_search_popular?stx",
+
+  getValue: "value",
+
+  list: {
+    match: {
+    enabled: true
+    }
+  }
+};
+console.log(options);
+$("#data-json").easyAutocomplete(options);
+```
+
