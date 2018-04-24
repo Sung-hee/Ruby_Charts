@@ -1,9 +1,5 @@
 ## 황금알M 
 
-###루비 코드를 제외하고 설명 따윈 없습니다. (feat 작성자 마음)
-
-
-
 #### 1. Gemfile
 
 ```ruby
@@ -80,3 +76,10 @@ console.log(options);
 $("#data-json").easyAutocomplete(options);
 ```
 
+
+
+#### 기술 스택
+
+- 프론트앤드 : Html5, css3, JavaScript, Ruby on Rails, Ajax, jQuery
+- 백앤드 : Ruby on Rails, AWS EC2, PHP,  MSSQL, Nginx, Apache
+- 기타 : Trello, Github, C9, Atom, Bootstrap, Highcharts, dataTables, easy-autocomplete
